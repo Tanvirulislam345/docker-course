@@ -1,75 +1,97 @@
-# React + TypeScript + Vite
+# React Docker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React 19 + TypeScript + Vite app that runs in a Docker container. You can run it with Docker or directly with Node.js.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [Git](https://git-scm.com/)
+- To run with Docker: [Docker](https://docs.docker.com/get-docker/)
+- To run manually: [Node.js](https://nodejs.org/) 22 or newer (npm comes with it)
 
-## React Compiler
+## 1. Clone the repository
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone https://github.com/Tanvirulislam345/docker-course.git
+cd docker-course/react-docker
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## 2. Run with Docker
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Build the image
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+docker build -t react-docker .
+```
+
+### Run the container
+
+```bash
+docker run -p 5173:5173 react-docker
+```
+
+Open http://localhost:5173 in your browser.
+
+### Run in the background
+
+```bash
+docker run -d -p 5173:5173 --name react-app react-docker
+```
+
+```bash
+docker ps                # list running containers
+docker logs react-app    # see the app output
+docker stop react-app    # stop the container
+docker rm react-app      # remove the container
+```
+
+### Live reload while developing (optional)
+
+Mount your source code into the container so your edits show up without rebuilding the image:
+
+```bash
+docker run -p 5173:5173 -v "$(pwd):/app" -v /app/node_modules react-docker
+```
+
+The second `-v /app/node_modules` keeps the container's installed packages from being replaced by your local folder.
+
+> On Windows, use `${PWD}` in PowerShell or `%cd%` in Command Prompt instead of `$(pwd)`.
+
+## 3. Run manually (without Docker)
+
+```bash
+npm install
+npm run dev
+```
+
+Open http://localhost:5173 in your browser.
+
+### Other scripts
+
+| Command           | What it does                              |
+| ----------------- | ----------------------------------------- |
+| `npm run dev`     | Start the dev server with hot reload      |
+| `npm run build`   | Type-check and build for production       |
+| `npm run preview` | Serve the production build locally        |
+| `npm run lint`    | Run ESLint                                |
+
+## Project structure
 
 ```
+react-docker/
+├── public/            # static files
+├── src/               # React source code
+│   ├── assets/
+│   ├── App.tsx
+│   └── main.tsx
+├── Dockerfile         # builds the Docker image
+├── .dockerignore      # files left out of the Docker image
+├── index.html
+├── package.json
+└── vite.config.ts
+```
+
+## Troubleshooting
+
+- **Port 5173 is already in use:** map a different host port, for example `docker run -p 3000:5173 react-docker`, then open http://localhost:3000.
+- **Page doesn't load from Docker:** the `dev` script runs `vite --host` so the server listens on all interfaces. Keep the `--host` flag if you change the script.
+- **`EACCES: permission denied`:** the Dockerfile runs the app as a non-root `app` user and gives it ownership of `/app`. If you change the Dockerfile, keep the `chown -R app:app .` step before `npm install`.

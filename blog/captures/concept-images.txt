@@ -1,0 +1,9 @@
+$ docker images
+REPOSITORY                 TAG       IMAGE ID       SIZE
+react-docker-compose-web   latest    0b0cc6d44d6e   514MB
+react-docker               latest    feac301e8449   514MB
+hello-docker               latest    ab1bc3bb4303   229MB
+mern-docker-web            latest    de4a7f398fe7   488MB
+mern-docker-api            latest    6dc6fbdd7181   277MB
+mongo                      latest    bac22ea7710d   1.47GB
+nginx                      alpine    df221db836e1   94.4MB

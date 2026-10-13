@@ -1,0 +1,22 @@
+$ docker compose up -d --build
+ Image react-docker-compose-web Building 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ Image react-docker-compose-web Built 
+ Network react-docker-compose_default Creating 
+ Network react-docker-compose_default Created 
+ Container react-docker-compose-web-1 Creating 
+ Container react-docker-compose-web-1 Created 
+ Container react-docker-compose-web-1 Starting 
+ Container react-docker-compose-web-1 Started 

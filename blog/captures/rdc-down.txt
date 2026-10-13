@@ -1,0 +1,7 @@
+$ docker compose down
+ Container react-docker-compose-web-1 Stopping 
+ Container react-docker-compose-web-1 Stopped 
+ Container react-docker-compose-web-1 Removing 
+ Container react-docker-compose-web-1 Removed 
+ Network react-docker-compose_default Removing 
+ Network react-docker-compose_default Removed 

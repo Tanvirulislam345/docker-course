@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="shot" content="1400x1000">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { width: 1400px; height: 1000px; }
+  .acts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .act { background: #fff; border-radius: 22px; padding: 22px; border: 3px solid; display: flex; flex-direction: column; gap: 12px; }
+  .act .tag { font-family: var(--mono); font-weight: 700; font-size: 22px; padding: 6px 14px; border-radius: 10px; align-self: flex-start; }
+  .act h3 { font-size: 20px; font-weight: 800; color: var(--navy); }
+  .act p { font-size: 16.5px; color: var(--muted); line-height: 1.45; }
+  .flow { display: flex; align-items: center; gap: 8px; font-size: 14.5px; font-weight: 700; flex-wrap: wrap; }
+  .flow span { background: var(--bg); border-radius: 8px; padding: 6px 9px; }
+  .flow i { font-style: normal; color: var(--muted); }
+  .ex { font-family: var(--mono); font-size: 14.5px; background: #0d1526; color: #d6e1f5; border-radius: 10px; padding: 10px 12px; white-space: pre; line-height: 1.55; }
+  .ex .n { color: #7ee787; } .ex .s { color: #a5d6ff; }
+  .use { font-size: 15.5px; font-weight: 700; border-radius: 10px; padding: 9px 12px; }
+  .sync { border-color: #b8d0ff; } .sync .tag { background: var(--blue-l); color: var(--blue-d); } .sync .use { background: var(--blue-l); color: var(--blue-d); }
+  .reb { border-color: #ffd2bd; } .reb .tag { background: var(--orange-l); color: #b5400f; } .reb .use { background: var(--orange-l); color: #b5400f; }
+  .sr { border-color: #cfc4ff; } .sr .tag { background: var(--purple-l); color: #5a3bd6; } .sr .use { background: var(--purple-l); color: #5a3bd6; }
+  .prob { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .pb { border-radius: 18px; padding: 16px 20px; font-size: 17px; line-height: 1.5; }
+</style></head>
+<body><div class="canvas">
+  <div><div class="kicker">docker compose watch</div><div class="title">Save a file → Docker updates the container for you</div></div>
+  <div class="prob">
+    <div class="pb" style="background:var(--red-l);color:#7a1a12"><b>😩 Without watch:</b> change code → <span class="c">docker compose down</span> → <span class="c">up --build</span> → wait… every single time. Bind mounts help, but they share <i>everything</i> (even node_modules) and can be slow on Mac/Windows.</div>
+    <div class="pb" style="background:var(--green-l);color:#05502f"><b>😌 With watch:</b> you list <b>which</b> files to watch and <b>what</b> to do. Compose copies only what changed — or rebuilds only when it must.</div>
+  </div>
+  <div class="acts">
+    <div class="act sync">
+      <div class="tag">sync</div>
+      <h3>Copy changed files into the running container</h3>
+      <div class="flow"><span>✏️ edit App.jsx</span><i>→</i><span>📋 copied</span><i>→</i><span>⚡ HMR / nodemon</span></div>
+      <div class="ex"><span class="n">- path:</span> ./frontend
+  <span class="n">target:</span> /app
+  <span class="n">action:</span> <span class="s">sync</span></div>
+      <div class="use">Use for: source code with hot reload</div>
+    </div>
+    <div class="act reb">
+      <div class="tag">rebuild</div>
+      <h3>Build a new image &amp; replace the container</h3>
+      <div class="flow"><span>📦 edit package.json</span><i>→</i><span>🔨 build</span><i>→</i><span>🔁 new container</span></div>
+      <div class="ex"><span class="n">- path:</span> ./frontend/package.json
+  <span class="n">action:</span> <span class="s">rebuild</span></div>
+      <div class="use">Use for: new npm packages, Dockerfile changes</div>
+    </div>
+    <div class="act sr">
+      <div class="tag">sync+restart</div>
+      <h3>Copy the file, then restart the container</h3>
+      <div class="flow"><span>⚙️ edit config</span><i>→</i><span>📋 copied</span><i>→</i><span>🔄 restart</span></div>
+      <div class="ex"><span class="n">- path:</span> ./nginx.conf
+  <span class="n">target:</span> /etc/nginx/nginx.conf
+  <span class="n">action:</span> <span class="s">sync+restart</span></div>
+      <div class="use">Use for: config files read only at startup</div>
+    </div>
+  </div>
+</div></body></html>

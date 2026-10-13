@@ -1,0 +1,4 @@
+$ curl -X POST http://localhost:8000/api/anime -H "Content-Type: application/json" -d '{"title":"Naruto","description":"A ninja story"}'
+{"title":"Naruto","description":"A ninja story","_id":"6ace2542f8bee954078eba94","__v":0}
+$ curl http://localhost:8000/api/anime
+[{"_id":"6ace2542f8bee954078eba94","title":"Naruto","description":"A ninja story","__v":0}]

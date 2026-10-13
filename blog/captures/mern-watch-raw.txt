@@ -1,0 +1,115 @@
+ Image mern-docker-web Building 
+ Image mern-docker-api Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.03kB done
+#1 DONE 0.0s
+
+#2 [api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.69kB done
+#2 DONE 0.0s
+
+#3 [web internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.70kB done
+#3 DONE 0.1s
+
+#4 [web internal] load metadata for docker.io/library/node:24-alpine
+#4 DONE 0.9s
+
+#5 [api internal] load .dockerignore
+#5 transferring context: 672B done
+#5 DONE 0.1s
+
+#6 [web internal] load .dockerignore
+#6 transferring context: 672B done
+#6 DONE 0.1s
+
+#7 [web 1/7] FROM docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1
+#7 resolve docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1
+#7 resolve docker.io/library/node:24-alpine@sha256:ebfe2f90462722a7a4de65e91990e97fe0d401c70e0e762c5b53302f905ec1c1 0.1s done
+#7 DONE 0.1s
+
+#8 [api internal] load build context
+#8 transferring context: 270B done
+#8 DONE 0.1s
+
+#9 [web internal] load build context
+#9 transferring context: 621B done
+#9 DONE 0.1s
+
+#10 [web 4/7] COPY package*.json ./
+#10 CACHED
+
+#11 [web 5/7] RUN chown -R app:app .
+#11 CACHED
+
+#12 [web 6/7] RUN npm ci
+#12 CACHED
+
+#13 [web 7/7] COPY . .
+#13 CACHED
+
+#14 [api 5/7] RUN chown -R app:app .
+#14 CACHED
+
+#15 [api 4/7] COPY package*.json ./
+#15 CACHED
+
+#16 [api 2/7] RUN addgroup app && adduser -S -G app app
+#16 CACHED
+
+#17 [api 3/7] WORKDIR /app
+#17 CACHED
+
+#18 [api 6/7] RUN npm ci
+#18 CACHED
+
+#19 [api 7/7] COPY . .
+#19 CACHED
+
+#20 [api] exporting to image
+#20 exporting layers done
+#20 exporting manifest sha256:b70802a4d19bda753c9eb5043c247ece606bf4b922b66f3009b57287e8c6a38d done
+#20 exporting config sha256:07a76be5faad32b52bb2d463b91631bd23286e95d1d970ba347a797f35b340c5
+#20 exporting config sha256:07a76be5faad32b52bb2d463b91631bd23286e95d1d970ba347a797f35b340c5 done
+#20 exporting attestation manifest sha256:84a5bc68f74f0fafd57dde04ffe79b84e15ab51c42a59816ac61f6b8ddbc1459 0.1s done
+#20 exporting manifest list sha256:6dc6fbdd7181901fcddbc2843c106c935b12c3d1847a06dab1e811cd3aeddb0a
+#20 exporting manifest list sha256:6dc6fbdd7181901fcddbc2843c106c935b12c3d1847a06dab1e811cd3aeddb0a 0.1s done
+#20 naming to docker.io/library/mern-docker-api:latest 0.0s done
+#20 unpacking to docker.io/library/mern-docker-api:latest 0.0s done
+#20 DONE 0.4s
+
+#21 [web] exporting to image
+#21 exporting layers done
+#21 exporting manifest sha256:10cca2db8599ba538d321433e050be240f09d5a8ef02cbebb0cbafd6429b3955 done
+#21 exporting config sha256:9e8f29ea5892a3bfa18d62edfd30a6d90b3e542751a0a18ba1cf077e3a5ec2df done
+#21 exporting attestation manifest sha256:06088659314dcb93a9868382e7a2fbffa003cd478ff59b4816f4d75f3337100d 0.1s done
+#21 exporting manifest list sha256:de4a7f398fe73b3ecf86ffe32354c118af4daae78bf1549bf6b1d8580897e3b1 0.1s done
+#21 naming to docker.io/library/mern-docker-web:latest done
+#21 unpacking to docker.io/library/mern-docker-web:latest 0.0s done
+#21 DONE 0.4s
+
+#22 [api] resolving provenance for metadata file
+#22 DONE 0.0s
+
+#23 [web] resolving provenance for metadata file
+#23 DONE 0.0s
+ Image mern-docker-api Built 
+ Image mern-docker-web Built 
+ Network mern-docker_default Creating 
+ Network mern-docker_default Created 
+ Container mern-docker-db-1 Creating 
+ Container mern-docker-db-1 Created 
+ Container mern-docker-api-1 Creating 
+ Container mern-docker-api-1 Created 
+ Container mern-docker-web-1 Creating 
+ Container mern-docker-web-1 Created 
+ Container mern-docker-db-1 Starting 
+ Container mern-docker-db-1 Started 
+ Container mern-docker-api-1 Starting 
+ Container mern-docker-api-1 Started 
+ Container mern-docker-web-1 Starting 
+ Container mern-docker-web-1 Started 
+Watch enabled
+Syncing service "api" after 2 changes were detected
+Syncing service "api" after 1 changes were detected
+

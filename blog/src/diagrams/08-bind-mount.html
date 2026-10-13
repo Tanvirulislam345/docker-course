@@ -1,0 +1,51 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="shot" content="1400x820">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { width: 1400px; height: 820px; }
+  .cmdline { font-family: var(--mono); font-size: 22px; font-weight: 700; background: #0d1526; color: #fff; border-radius: 14px; padding: 16px 24px; }
+  .cmdline .a { color: #7cb6ff; } .cmdline .b { color: #d2a8ff; }
+  .map { display: grid; grid-template-columns: 1fr 170px 1fr; gap: 0; align-items: stretch; }
+  .side { border-radius: 22px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .host { background: #fff; border: 3px solid #b8d0ff; }
+  .ctr { background: var(--green-l); border: 3px solid #b5ebcf; }
+  .side h3 { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .f { font-family: var(--mono); font-size: 17px; font-weight: 600; border-radius: 10px; padding: 9px 12px; background: var(--bg); display: flex; justify-content: space-between; }
+  .f.sync { background: var(--blue-l); color: var(--blue-d); }
+  .f.nm { background: var(--purple-l); color: #5a3bd6; }
+  .f.bad { background: var(--red-l); color: #b42318; text-decoration: line-through; }
+  .f small { font-family: var(--sans); font-weight: 700; font-size: 13.5px; }
+  .mid { display: flex; flex-direction: column; justify-content: center; gap: 30px; text-align: center; font-weight: 800; font-size: 15px; }
+  .mid .g { font-size: 40px; line-height: 1; }
+  .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .lg { border-radius: 16px; padding: 16px 20px; font-size: 17.5px; line-height: 1.5; }
+  .lg code { font-family: var(--mono); font-weight: 700; }
+</style></head>
+<body><div class="canvas">
+  <div><div class="kicker">Volumes for live reload</div><div class="title">Sync your code, but protect node_modules</div></div>
+  <div class="cmdline">docker run -p 5173:5173 <span class="a">-v "$(pwd):/app"</span> <span class="b">-v /app/node_modules</span> react-docker</div>
+  <div class="map">
+    <div class="side host">
+      <h3>💻 Your project folder</h3>
+      <div class="f sync">src/App.tsx <small>you edit here ✏️</small></div>
+      <div class="f sync">package.json</div>
+      <div class="f sync">index.html</div>
+      <div class="f">node_modules/ <small>built for your OS</small></div>
+    </div>
+    <div class="mid">
+      <div style="color:var(--blue)"><div class="g">⇄</div>bind mount<br>(live sync)</div>
+      <div style="color:var(--purple)"><div class="g">🛡️</div>anonymous volume<br>(keeps its own copy)</div>
+    </div>
+    <div class="side ctr">
+      <h3>📦 Container /app</h3>
+      <div class="f sync">src/App.tsx <small>updates instantly ⚡</small></div>
+      <div class="f sync">package.json</div>
+      <div class="f sync">index.html</div>
+      <div class="f nm">node_modules/ <small>from npm install in image</small></div>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="lg" style="background:var(--blue-l)"><code>-v "$(pwd):/app"</code> mirrors your folder into the container, so every save shows up without rebuilding.</div>
+    <div class="lg" style="background:var(--purple-l)"><code>-v /app/node_modules</code> stops your local <b>node_modules</b> from hiding the container's own packages (otherwise Vite crashes).</div>
+  </div>
+</div></body></html>

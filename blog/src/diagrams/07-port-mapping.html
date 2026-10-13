@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="shot" content="1400x700">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { width: 1400px; height: 700px; }
+  .cmdline { font-family: var(--mono); font-size: 30px; font-weight: 700; background: #0d1526; color: #fff; border-radius: 16px; padding: 20px 28px; align-self: flex-start; }
+  .cmdline .h { color: #7cb6ff; } .cmdline .c2 { color: #4ade80; } .cmdline .p { color: #ff9b6a; }
+  .map { display: grid; grid-template-columns: 1fr 200px 1fr; align-items: center; flex: 1; }
+  .side { border-radius: 24px; padding: 24px; height: 100%; display: flex; flex-direction: column; gap: 14px; justify-content: center; }
+  .host { background: #fff; border: 3px solid #b8d0ff; }
+  .ctr { background: var(--green-l); border: 3px solid #b5ebcf; }
+  .side h3 { font-size: 24px; font-weight: 800; }
+  .port { display: flex; align-items: center; gap: 14px; font-size: 19px; color: var(--muted); }
+  .port b { font-family: var(--mono); font-size: 30px; border-radius: 12px; padding: 8px 16px; }
+  .host .port b { background: var(--blue-l); color: var(--blue-d); }
+  .ctr .port b { background: #c6f0da; color: #067647; }
+  .side p { font-size: 17px; color: var(--muted); line-height: 1.45; }
+  .mid { text-align: center; font-weight: 800; color: var(--orange); font-size: 18px; }
+  .mid .g { font-size: 60px; line-height: 1; }
+</style></head>
+<body><div class="canvas">
+  <div><div class="kicker">Port mapping</div><div class="title">-p HOST_PORT : CONTAINER_PORT</div></div>
+  <div class="cmdline">docker run <span class="p">-p</span> <span class="h">3000</span>:<span class="c2">5173</span> react-docker</div>
+  <div class="map">
+    <div class="side host">
+      <h3>💻 Your computer (host)</h3>
+      <div class="port"><b>3000</b> you open http://localhost:3000</div>
+      <p>The door on <b>your</b> machine. Pick any free port — change it if 5173 is busy.</p>
+    </div>
+    <div class="mid"><div class="g">⇄</div>Docker forwards<br>the traffic</div>
+    <div class="side ctr">
+      <h3>📦 Container</h3>
+      <div class="port"><b>5173</b> where Vite listens</div>
+      <p>The port the app uses <b>inside</b> the box — the one in <span class="c">EXPOSE 5173</span>.</p>
+    </div>
+  </div>
+</div></body></html>

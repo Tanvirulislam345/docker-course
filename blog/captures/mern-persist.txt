@@ -1,0 +1,18 @@
+$ docker compose down
+ Container mern-docker-db-1 Removed 
+ Network mern-docker_default Removing 
+ Network mern-docker_default Removed 
+$ docker compose up -d
+ Container mern-docker-web-1 Starting 
+ Container mern-docker-web-1 Started 
+$ curl http://localhost:8000/api/anime
+[{"_id":"6ace2542f8bee954078eba94","title":"Naruto","description":"A ninja story","__v":0}]
+# ✅ Naruto is still here — the "anime" volume kept the data
+$ docker compose down -v
+ Volume mern-docker_anime Removing 
+ Volume mern-docker_anime Removed 
+$ docker compose up -d
+ Container mern-docker-web-1 Started 
+$ curl http://localhost:8000/api/anime
+[]
+# ❌ Empty — down -v deleted the volume and all data

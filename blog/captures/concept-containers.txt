@@ -1,0 +1,18 @@
+$ docker pull nginx:alpine
+Digest: sha256:df221db836e1754089190208cee7eeda94f233197056426eda74a43ab1abeac2
+Status: Downloaded newer image for nginx:alpine
+docker.io/library/nginx:alpine
+$ docker run -d --name web1 -p 8080:80 nginx:alpine
+9890c5da9131d96e1dd7c8eebb46ad1743b83dc6cebeba4e65be82e45bcae9bf
+$ docker run -d --name web2 nginx:alpine
+46f4dbddb5b72d0e9d7d91eb8ed89dedb78e02e5198f330f5c9714eccada2e3e
+$ docker ps
+CONTAINER ID   IMAGE          STATUS                  PORTS                                     NAMES
+46f4dbddb5b7   nginx:alpine   Up Less than a second   80/tcp                                    web2
+9890c5da9131   nginx:alpine   Up Less than a second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   web1
+$ docker stop web1 web2
+web1
+web2
+$ docker rm web1 web2
+web1
+web2

@@ -1,0 +1,23 @@
+$ docker network create my-net
+beb3c2db0e44
+$ docker run -d --name db --network my-net mongo:latest
+6c33b4baa8eb
+$ docker run --rm --network my-net busybox ping -c 2 db
+Unable to find image 'busybox:latest' locally
+latest: Pulling from library/busybox
+37bb94b0940b: Pulling fs layer
+37bb94b0940b: Download complete
+37bb94b0940b: Pull complete
+46500c34ad0c: Download complete
+Digest: sha256:fd7dc98638c8e305f4dc34e979f1c0fdfdcaeb0fbf8fcff77ae834b6da3d7e6e
+Status: Downloaded newer image for busybox:latest
+PING db (172.18.0.2): 56 data bytes
+64 bytes from 172.18.0.2: seq=0 ttl=64 time=0.211 ms
+64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.111 ms
+
+--- db ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max = 0.111/0.161/0.211 ms
+$ docker rm -f db && docker network rm my-net
+db
+my-net

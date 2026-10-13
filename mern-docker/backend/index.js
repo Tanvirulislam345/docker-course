@@ -36,8 +36,10 @@ app.post("/api/anime", async (req, res) => {
   res.json(anime);
 });
 
-app.listen(8000, () => {
-  console.log("server listening on port 8000");
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, () => {
+  console.log(`server listening on port ${PORT}`);
 
   // connect to the database
   connect();

@@ -1,5 +1,5 @@
 # set the base image to create the image for react app
-ARG NODE_VERSION=22.21.1
+ARG NODE_VERSION=24
 FROM node:${NODE_VERSION}-alpine
 
 # create a user with permissions to run the app
@@ -34,8 +34,8 @@ RUN chown -R app:app .
 # change the user back to the app user
 USER app
 
-# install dependencies
-RUN npm install
+# install dependencies exactly as pinned in package-lock.json
+RUN npm ci
 
 # copy the rest of the files to the working directory
 COPY . .

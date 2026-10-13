@@ -1,6 +1,3 @@
-# specify the version of docker-compose
-version: "3.9"
-
 # define the services/containers to be run
 services:
   # define the frontend service

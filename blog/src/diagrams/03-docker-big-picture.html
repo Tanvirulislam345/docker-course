@@ -1,0 +1,82 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="shot" content="1100x1500">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { width: 1100px; height: 1500px; }
+  .zone { border-radius: 24px; padding: 22px 24px; position: relative; }
+  .zone > .zt { font-size: 24px; font-weight: 800; display: flex; align-items: baseline; gap: 12px; }
+  .zone > .zt small { font-size: 18px; font-weight: 600; color: var(--muted); }
+  .client { background: #fff; border: 3px solid var(--line); }
+  .cmds { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+  .cmd { font-family: var(--mono); font-size: 19px; background: #0d1526; color: #fff; border-radius: 10px; padding: 9px 14px; font-weight: 600; }
+  .cmd b { color: #4ade80; }
+  .link { text-align: center; color: var(--blue); font-weight: 800; font-size: 19px; line-height: 1.2; }
+  .link .g { font-size: 34px; display: block; }
+  .host { background: var(--blue-l); border: 3px solid #b8d0ff; display: flex; flex-direction: column; gap: 18px; }
+  .daemon { background: var(--navy); color: #fff; border-radius: 16px; padding: 14px 18px; font-size: 22px; font-weight: 800; }
+  .daemon small { display: block; font-size: 17px; font-weight: 500; color: #b9c9e8; margin-top: 4px; }
+  .flow { display: grid; grid-template-columns: 1fr 112px 1fr 112px 1.1fr; align-items: center; }
+  .node { background: #fff; border-radius: 18px; border: 3px solid; padding: 16px; text-align: center; }
+  .node .ic { font-size: 42px; }
+  .node h3 { font-size: 24px; font-weight: 800; margin-top: 4px; }
+  .node p { font-size: 17px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+  .node .ana { margin-top: 8px; font-size: 16px; font-weight: 700; border-radius: 8px; padding: 6px; }
+  .df { border-color: #9fb0c9; } .df h3 { color: var(--navy); } .df .ana { background: #eef1f6; }
+  .im { border-color: var(--blue); } .im h3 { color: var(--blue); } .im .ana { background: var(--blue-l); color: var(--blue-d); }
+  .arr { text-align: center; color: var(--blue); font-weight: 800; font-family: var(--mono); font-size: 15px; }
+  .arr .g { font-family: var(--sans); font-size: 36px; display: block; line-height: 1; }
+  .ctrs { display: flex; flex-direction: column; gap: 8px; }
+  .ct { background: #fff; border: 3px solid var(--green); border-radius: 14px; padding: 10px 12px; font-size: 18px; font-weight: 800; color: #067647; display: flex; gap: 8px; align-items: center; }
+  .ct small { font-weight: 600; color: var(--muted); font-size: 15px; }
+  .extras { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .ex { border-radius: 18px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; }
+  .ex .ic { font-size: 40px; line-height: 1; }
+  .ex h4 { font-size: 22px; font-weight: 800; }
+  .ex p { font-size: 18px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .vol { background: #fff; border: 3px solid #cfc4ff; } .vol h4 { color: var(--purple); }
+  .net { background: #fff; border: 3px solid #a6e3e3; } .net h4 { color: #087878; }
+  .reg { background: var(--orange-l); border: 3px solid #ffd2bd; }
+  .repos { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+  .repo { background: #fff; border-radius: 10px; padding: 9px 16px; font-family: var(--mono); font-size: 19px; font-weight: 700; color: #8a2f0a; }
+  .mid2 { display: grid; grid-template-columns: 1fr 1fr; }
+</style></head>
+<body><div class="canvas">
+  <div><div class="kicker">The big picture</div><div class="title">How all the Docker pieces fit together</div></div>
+
+  <div class="zone client">
+    <div class="zt">💻 Docker Client <small>the <code>docker</code> command you type</small></div>
+    <div class="cmds"><div class="cmd"><b>$</b> docker build</div><div class="cmd"><b>$</b> docker run</div><div class="cmd"><b>$</b> docker pull</div><div class="cmd"><b>$</b> docker push</div></div>
+  </div>
+
+  <div class="link"><span class="g">⬇</span>sends your command to the daemon</div>
+
+  <div class="zone host">
+    <div class="zt">🖥️ Docker Host <small>your laptop or server</small></div>
+    <div class="daemon">⚙️ Docker Daemon (dockerd)<small>The engine that does the real work: builds images, runs containers, manages volumes &amp; networks</small></div>
+    <div class="flow">
+      <div class="node df"><div class="ic">📄</div><h3>Dockerfile</h3><p>Build steps in a text file</p><div class="ana">the recipe</div></div>
+      <div class="arr"><span class="g">➜</span>docker build</div>
+      <div class="node im"><div class="ic">📦</div><h3>Image</h3><p>Code + Node + packages, read-only</p><div class="ana">the packed lunch box</div></div>
+      <div class="arr"><span class="g">➜</span>docker run</div>
+      <div class="ctrs">
+        <div class="ct">🟢 Container 1 <small>running copy</small></div>
+        <div class="ct">🟢 Container 2 <small>same image</small></div>
+        <div class="ct">🟢 Container 3 <small>isolated</small></div>
+      </div>
+    </div>
+    <div class="extras">
+      <div class="ex vol"><div class="ic">💾</div><div><h4>Volume</h4><p>Storage outside the container. Delete the container — the data stays.</p></div></div>
+      <div class="ex net"><div class="ic">🌐</div><div><h4>Network</h4><p>Containers talk to each other <b>by name</b>, e.g. <span class="c">db:27017</span>.</p></div></div>
+    </div>
+  </div>
+
+  <div class="mid2">
+    <div class="link"><span class="g">⬇</span>docker push (share)</div>
+    <div class="link"><span class="g">⬆</span>docker pull (download)</div>
+  </div>
+
+  <div class="zone reg">
+    <div class="zt">☁️ Registry <small>Docker Hub, GitHub Container Registry, AWS ECR…</small></div>
+    <div class="repos"><div class="repo">node</div><div class="repo">ubuntu</div><div class="repo">mongo</div><div class="repo">yourname/react-app</div></div>
+  </div>
+</div></body></html>

@@ -27,14 +27,14 @@ Companion to the blog post **Docker One Shot** and the hands-on projects in this
 | `docker images` | List images on your machine (same as `docker image ls`) |
 | `docker images -a` | List all images, including intermediate ones |
 | `docker images -q` | List only image IDs |
-| `docker pull nginx` | Download an image (tag `latest` by default) |
+| `docker pull ubuntu` | Download an image (tag `latest` by default) |
 | `docker pull node:22-alpine` | Download a specific tag |
-| `docker image inspect nginx` | Show full details (layers, env, ports) as JSON |
-| `docker image history nginx` | Show the layers an image is built from |
+| `docker image inspect ubuntu` | Show full details (layers, env, ports) as JSON |
+| `docker image history node:22-alpine` | Show the layers an image is built from |
 | `docker tag react-docker myname/react-docker:1.0` | Add a new name/tag to an image |
-| `docker rmi nginx` | Remove one image |
-| `docker rmi nginx mongo hello-docker` | Remove several images at once |
-| `docker rmi -f nginx` | Force remove (even if a stopped container uses it) |
+| `docker rmi ubuntu` | Remove one image |
+| `docker rmi ubuntu mongo hello-docker` | Remove several images at once |
+| `docker rmi -f ubuntu` | Force remove (even if a stopped container uses it) |
 | `docker rmi $(docker images -q)` | Remove **all** images |
 | `docker image prune` | Remove dangling images (`<none>` tags) |
 | `docker image prune -a` | Remove every image not used by a container |
@@ -47,19 +47,19 @@ Companion to the blog post **Docker One Shot** and the hands-on projects in this
 
 | Command | What it does |
 | --- | --- |
-| `docker run nginx` | Create and start a container (foreground) |
-| `docker run -d nginx` | Run in the background (detached) |
-| `docker run --name web nginx` | Give the container a name |
-| `docker run -p 8080:80 nginx` | Map host port 8080 → container port 80 |
+| `docker run hello-docker` | Create and start a container (foreground) |
+| `docker run -d react-docker` | Run in the background (detached) |
+| `docker run --name web react-docker` | Give the container a name |
+| `docker run -p 3000:5173 react-docker` | Map host port 3000 → container port 5173 |
 | `docker run --rm hello-docker` | Delete the container automatically when it stops |
-| `docker run -it node:22-alpine sh` | Start an interactive shell |
+| `docker run -it ubuntu` | Start an interactive shell in a new container |
 | `docker run -e DB_URL=mongodb://db/anime mern-backend` | Set an environment variable |
 | `docker run --env-file .env mern-backend` | Load env variables from a file |
 | `docker run -v "$(pwd):/app" react-docker` | Bind-mount the current folder into `/app` |
 | `docker run -v /app/node_modules react-docker` | Anonymous volume (protects `node_modules`) |
 | `docker run -v anime:/data/db mongo` | Mount a named volume |
 | `docker run --network my-net mongo` | Attach to a network |
-| `docker create --name web nginx` | Create a container without starting it |
+| `docker create --name web react-docker` | Create a container without starting it |
 
 ### List & inspect
 
@@ -211,7 +211,7 @@ Run these in the folder that has `compose.yaml`.
 | Command | What it does |
 | --- | --- |
 | `docker login` | Log in to Docker Hub |
-| `docker search nginx` | Search Docker Hub |
+| `docker search node` | Search Docker Hub |
 | `docker tag react-docker yourname/react-docker:1.0` | Name the image for your account |
 | `docker push yourname/react-docker:1.0` | Upload the image |
 | `docker pull yourname/react-docker:1.0` | Download it on any other machine |
@@ -232,7 +232,7 @@ Run these in the folder that has `compose.yaml`.
 
 | Flag | Meaning | Example |
 | --- | --- | --- |
-| `-d` | Detached (background) | `docker run -d nginx` |
+| `-d` | Detached (background) | `docker run -d react-docker` |
 | `-p host:container` | Publish a port | `-p 3000:5173` |
 | `--name` | Container name | `--name react-app` |
 | `--rm` | Remove when stopped | `docker run --rm hello-docker` |

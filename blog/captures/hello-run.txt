@@ -1,2 +1,0 @@
-$ docker run --rm hello-docker
-Hello, Docker!

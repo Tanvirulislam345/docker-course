@@ -1,5 +1,0 @@
-$ docker compose ps
-NAME                SERVICE   STATUS         PORTS
-mern-docker-api-1   api       Up 8 seconds   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
-mern-docker-db-1    db        Up 8 seconds   0.0.0.0:27017->27017/tcp, [::]:27017->27017/tcp
-mern-docker-web-1   web       Up 8 seconds   0.0.0.0:5173->5173/tcp, [::]:5173->5173/tcp

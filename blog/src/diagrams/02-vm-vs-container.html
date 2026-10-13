@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="shot" content="1100x900">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { width: 1100px; height: 900px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .side { display: flex; flex-direction: column; gap: 10px; }
+  .side h2 { font-size: 27px; font-weight: 800; color: var(--navy); text-align: center; margin-bottom: 4px; }
+  .layer { border-radius: 12px; padding: 15px 8px; text-align: center; font-weight: 700; font-size: 20px; color: var(--navy); }
+  .apps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stack { display: flex; flex-direction: column; gap: 6px; }
+  .app { background: var(--blue); color: #fff; }
+  .lib { background: #b8d0ff; }
+  .gos { background: #ffd2bd; color: #8a2f0a; }
+  .hyp { background: #ffe9a8; }
+  .eng { background: var(--navy); color: #fff; }
+  .os { background: #cfd8e8; }
+  .hw { background: #9fb0c9; }
+  .spacer { height: 51px; border: 2px dashed #b5ebcf; border-radius: 12px; display: grid; place-items: center; color: #067647; font-weight: 700; font-size: 17px; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .f { border-radius: 18px; padding: 18px 20px; font-size: 20px; line-height: 1.6; }
+  .f b { font-size: 22px; }
+  .vm { background: var(--red-l); color: #7a1a12; }
+  .ct { background: var(--green-l); color: #05502f; }
+</style></head>
+<body><div class="canvas">
+  <div><div class="kicker">Container vs virtual machine</div><div class="title">Containers share the host's OS kernel</div></div>
+  <div class="two">
+    <div class="side">
+      <h2>🖥️ Virtual machines</h2>
+      <div class="apps">
+        <div class="stack"><div class="layer app">App A</div><div class="layer lib">Libs</div><div class="layer gos">Guest OS</div></div>
+        <div class="stack"><div class="layer app">App B</div><div class="layer lib">Libs</div><div class="layer gos">Guest OS</div></div>
+        <div class="stack"><div class="layer app">App C</div><div class="layer lib">Libs</div><div class="layer gos">Guest OS</div></div>
+      </div>
+      <div class="layer hyp">Hypervisor</div>
+      <div class="layer os">Host OS</div>
+      <div class="layer hw">Hardware</div>
+    </div>
+    <div class="side">
+      <h2>🐳 Docker containers</h2>
+      <div class="apps">
+        <div class="stack"><div class="layer app">App A</div><div class="layer lib">Libs</div></div>
+        <div class="stack"><div class="layer app">App B</div><div class="layer lib">Libs</div></div>
+        <div class="stack"><div class="layer app">App C</div><div class="layer lib">Libs</div></div>
+      </div>
+      <div class="spacer">no guest OS needed</div>
+      <div class="layer eng">Docker Engine</div>
+      <div class="layer os">Host OS (shared kernel)</div>
+      <div class="layer hw">Hardware</div>
+    </div>
+  </div>
+  <div class="facts">
+    <div class="f vm"><b>VM</b><br>Size: GBs<br>Starts in: minutes<br>A few per laptop</div>
+    <div class="f ct"><b>Container</b><br>Size: MBs<br>Starts in: about a second<br>Dozens per laptop</div>
+  </div>
+</div></body></html>

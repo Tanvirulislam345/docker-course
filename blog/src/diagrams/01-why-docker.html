@@ -1,0 +1,53 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="shot" content="1100x1100">
+<link rel="stylesheet" href="../style.css">
+<style>
+  body { width: 1100px; height: 1100px; }
+  .panel { border-radius: 24px; padding: 24px 26px; display: flex; flex-direction: column; gap: 16px; }
+  .bad { background: var(--red-l); border: 3px solid #f9c4c0; }
+  .good { background: var(--green-l); border: 3px solid #b5ebcf; }
+  .panel h2 { font-size: 27px; font-weight: 800; }
+  .bad h2 { color: #b42318; } .good h2 { color: #067647; }
+  .machines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .m { background: #fff; border-radius: 18px; padding: 16px; text-align: center; }
+  .m .ic { font-size: 40px; }
+  .m h5 { font-size: 21px; font-weight: 800; color: var(--navy); margin-top: 2px; }
+  .m .env { font-family: var(--mono); font-size: 18px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+  .m .res { margin-top: 8px; font-weight: 800; font-size: 20px; }
+  .ok { color: #067647; } .no { color: #b42318; }
+  .say { font-size: 21px; font-weight: 600; color: var(--navy); line-height: 1.45; }
+  .img { background: #fff; border: 3px dashed var(--blue); border-radius: 18px; padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: center; }
+  .img .lbl { font-weight: 800; color: var(--blue); font-size: 22px; }
+  .img .t { font-family: var(--mono); font-size: 18px; background: var(--blue-l); color: var(--blue-d); padding: 6px 12px; border-radius: 8px; font-weight: 700; }
+  .down { text-align: center; font-size: 19px; font-weight: 800; color: var(--blue); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chips span { background: #fff; border: 2px solid var(--line); border-radius: 999px; padding: 8px 16px; font-size: 19px; font-weight: 700; color: var(--navy); }
+</style></head>
+<body><div class="canvas">
+  <div><div class="kicker">The problem Docker solves</div><div class="title">"But it works on my machine!"</div></div>
+
+  <div class="panel bad">
+    <h2>❌ Without Docker — every machine is different</h2>
+    <div class="machines">
+      <div class="m"><div class="ic">💻</div><h5>Your laptop</h5><div class="env">Node 22 · Mongo 7<br>Ubuntu</div><div class="res ok">✅ works</div></div>
+      <div class="m"><div class="ic">🧑‍💻</div><h5>Teammate</h5><div class="env">Node 18 · Mongo 5<br>Windows</div><div class="res no">💥 crashes</div></div>
+      <div class="m"><div class="ic">☁️</div><h5>Server</h5><div class="env">Node 20 · no Mongo<br>Debian</div><div class="res no">💥 fails</div></div>
+    </div>
+    <div class="say">Same code, different environment → hours lost on setup bugs.</div>
+  </div>
+
+  <div class="panel good">
+    <h2>✅ With Docker — ship the environment with the code</h2>
+    <div class="img"><span class="lbl">📦 Image =</span><span class="t">your code</span>+<span class="t">Node 22</span>+<span class="t">packages</span>+<span class="t">settings</span></div>
+    <div class="down">⬇ the same image runs on every machine ⬇</div>
+    <div class="machines">
+      <div class="m"><div class="ic">💻</div><h5>Your laptop</h5><div class="res ok">✅ works</div></div>
+      <div class="m"><div class="ic">🧑‍💻</div><h5>Teammate</h5><div class="res ok">✅ works</div></div>
+      <div class="m"><div class="ic">☁️</div><h5>Server</h5><div class="res ok">✅ works</div></div>
+    </div>
+    <div class="chips">
+      <span>🎯 Consistency</span><span>🧊 Isolation</span><span>🚚 Portability</span><span>📈 Scalability</span>
+      <span>🏷️ Version control</span><span>⚙️ CI/CD</span><span>🚀 Fast onboarding</span><span>🧹 Easy cleanup</span>
+    </div>
+  </div>
+</div></body></html>

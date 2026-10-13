@@ -7,7 +7,7 @@ import sys
 
 from PIL import Image
 
-MARGIN = 56
+MARGIN = 100
 
 for path in sys.argv[1:]:
     img = Image.open(path).convert("RGB")

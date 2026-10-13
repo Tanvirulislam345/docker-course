@@ -1,4 +1,0 @@
-$ docker images hello-docker
-WARNING: This output is designed for human readability. For machine-readable output, please use --format.
-IMAGE                 ID             DISK USAGE   CONTENT SIZE   EXTRA
-hello-docker:latest   ab1bc3bb4303        229MB         56.7MB        

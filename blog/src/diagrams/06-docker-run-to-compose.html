@@ -4,64 +4,68 @@
 <style>
   body { width: 1100px; height: 1500px; }
   .two { display: grid; grid-template-columns: 560px 1fr; gap: 22px; align-items: start; }
-  .window pre { font-size: 18px; line-height: 29px; padding: 18px 20px 22px; }
-  .blk { display: block; border-radius: 6px; margin: 0 -8px; padding: 0 8px; }
-  .b1 { background: rgba(29,99,237,.30); } .b2 { background: rgba(18,183,106,.24); } .b3 { background: rgba(255,122,69,.26); }
-  .b4 { background: rgba(245,183,10,.22); } .b5 { background: rgba(122,90,248,.30); } .b6 { background: rgba(255,92,138,.24); }
-  .b7 { background: rgba(11,165,165,.28); } .b8 { background: rgba(154,168,191,.22); }
+  .window { background: #1e1e1e; border-color: #2d2d2d; }
+  .window .bar { background: #252526; }
+  .window .bar .name { color: #9d9d9d; }
+  .window pre { font-size: 17px; line-height: 29px; padding: 16px 18px 20px 8px; color: #d4d4d4; }
+  .window .ln { color: #6e7681; width: 40px; text-align: right; margin-right: 18px; }
+  .window .n { color: #9cdcfe; }
+  .window .s { color: #ce9178; }
   .notes { display: flex; flex-direction: column; gap: 11px; }
-  .nt { display: grid; grid-template-columns: 12px 1fr; gap: 12px; background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 11px 14px; }
-  .nt .sw { border-radius: 6px; }
+  .nt { background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 11px 14px; }
+  .nt .top { display: flex; align-items: baseline; gap: 10px; }
+  .nt .lnr { font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--muted); background: #eef1f6; border-radius: 6px; padding: 2px 7px; }
   .nt h4 { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--navy); }
-  .nt p { font-size: 16.5px; color: var(--muted); line-height: 1.4; margin-top: 2px; }
-  .nt .eq { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--blue-d); background: var(--blue-l); border-radius: 6px; padding: 2px 7px; display: inline-block; margin-top: 4px; }
+  .nt p { font-size: 16.5px; color: var(--muted); line-height: 1.4; margin-top: 3px; }
+  .nt .eq { font-family: var(--mono); font-size: 15px; font-weight: 700; color: var(--blue-d); background: var(--blue-l); border-radius: 6px; padding: 2px 7px; display: inline-block; margin-top: 5px; }
   .foot { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-  .fb { border-radius: 18px; padding: 16px 20px; font-size: 18.5px; line-height: 1.5; }
-  .fb code { font-family: var(--mono); font-weight: 700; }
+  .fb { border-radius: 18px; padding: 16px 20px; font-size: 18.5px; line-height: 1.5; background: #fff; border: 2px solid var(--line); color: var(--ink); }
+  .fb code { font-family: var(--mono); font-weight: 700; color: var(--blue-d); }
 </style></head>
 <body><div class="canvas">
   <div><div class="kicker">Docker Compose</div><div class="title">Every docker run flag has a place in compose.yaml</div></div>
   <div class="two">
     <div class="window"><div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span><span class="name">compose.yaml</span></div>
-<pre><span class="blk b1"><span class="n">services:</span></span><span class="blk b2">  <span class="n">web:</span>
-</span><span class="blk b8">    <span class="n">build:</span> ./frontend
-</span><span class="blk b3">    <span class="n">ports:</span>
-      - <span class="s">5173:5173</span>
-</span><span class="blk b4">    <span class="n">environment:</span>
-      <span class="n">VITE_API_URL:</span> <span class="s">http://localhost:8000</span>
-</span><span class="blk b6">    <span class="n">depends_on:</span>
-      - <span class="s">api</span>
-</span>
-<span class="blk b2">  <span class="n">api:</span>
-</span>    <span class="n">build:</span> ./backend
-    <span class="n">ports:</span>
-      - <span class="s">8000:8000</span>
-    <span class="n">environment:</span>
-      <span class="n">DB_URL:</span> <span class="s">mongodb://db/anime</span>
-    <span class="n">depends_on:</span>
-      - <span class="s">db</span>
-
-<span class="blk b2">  <span class="n">db:</span>
-</span><span class="blk b8">    <span class="n">image:</span> <span class="s">mongo:latest</span>
-</span><span class="blk b5">    <span class="n">volumes:</span>
-      - <span class="s">anime:/data/db</span>
-</span>
-<span class="blk b7"><span class="n">volumes:</span>
-  <span class="n">anime:</span></span></pre>
+<pre><span class="ln">1</span><span class="n">services:</span>
+<span class="ln">2</span>  <span class="n">web:</span>
+<span class="ln">3</span>    <span class="n">build:</span> ./frontend
+<span class="ln">4</span>    <span class="n">ports:</span>
+<span class="ln">5</span>      - <span class="s">5173:5173</span>
+<span class="ln">6</span>    <span class="n">environment:</span>
+<span class="ln">7</span>      <span class="n">VITE_API_URL:</span> <span class="s">http://localhost:8000</span>
+<span class="ln">8</span>    <span class="n">depends_on:</span>
+<span class="ln">9</span>      - <span class="s">api</span>
+<span class="ln">10</span>
+<span class="ln">11</span>  <span class="n">api:</span>
+<span class="ln">12</span>    <span class="n">build:</span> ./backend
+<span class="ln">13</span>    <span class="n">ports:</span>
+<span class="ln">14</span>      - <span class="s">8000:8000</span>
+<span class="ln">15</span>    <span class="n">environment:</span>
+<span class="ln">16</span>      <span class="n">DB_URL:</span> <span class="s">mongodb://db/anime</span>
+<span class="ln">17</span>    <span class="n">depends_on:</span>
+<span class="ln">18</span>      - <span class="s">db</span>
+<span class="ln">19</span>
+<span class="ln">20</span>  <span class="n">db:</span>
+<span class="ln">21</span>    <span class="n">image:</span> <span class="s">mongo:latest</span>
+<span class="ln">22</span>    <span class="n">volumes:</span>
+<span class="ln">23</span>      - <span class="s">anime:/data/db</span>
+<span class="ln">24</span>
+<span class="ln">25</span><span class="n">volumes:</span>
+<span class="ln">26</span>  <span class="n">anime:</span></pre>
     </div>
     <div class="notes">
-      <div class="nt"><div class="sw" style="background:#1d63ed"></div><div><h4>services</h4><p>Every container your app needs.</p></div></div>
-      <div class="nt"><div class="sw" style="background:#12b76a"></div><div><h4>web · api · db</h4><p>Service names. Each becomes a container — and a <b>hostname</b> other services can use.</p><span class="eq">= --name</span></div></div>
-      <div class="nt"><div class="sw" style="background:#9aa8bf"></div><div><h4>build / image</h4><p>Build from a folder with a Dockerfile, or use a ready-made image.</p><span class="eq">= docker build / docker pull</span></div></div>
-      <div class="nt"><div class="sw" style="background:#ff7a45"></div><div><h4>ports</h4><p>"host:container".</p><span class="eq">= -p 5173:5173</span></div></div>
-      <div class="nt"><div class="sw" style="background:#f5b70a"></div><div><h4>environment</h4><p>Settings your app reads.</p><span class="eq">= -e KEY=value</span></div></div>
-      <div class="nt"><div class="sw" style="background:#ff5c8a"></div><div><h4>depends_on</h4><p>Start these services first: db → api → web.</p></div></div>
-      <div class="nt"><div class="sw" style="background:#7a5af8"></div><div><h4>volumes (in a service)</h4><p>Mount a volume or a folder.</p><span class="eq">= -v anime:/data/db</span></div></div>
-      <div class="nt"><div class="sw" style="background:#0ba5a5"></div><div><h4>volumes (top level)</h4><p>Named volumes Compose creates for you.</p><span class="eq">= docker volume create</span></div></div>
+      <div class="nt"><div class="top"><span class="lnr">L1</span><h4>services</h4></div><p>The list of containers your app needs.</p></div>
+      <div class="nt"><div class="top"><span class="lnr">L2 · 11 · 20</span><h4>web · api · db</h4></div><p>Service names. Each one becomes a container, and also a <b>hostname</b> the other services can use.</p><span class="eq">= --name</span></div>
+      <div class="nt"><div class="top"><span class="lnr">L3 · 21</span><h4>build / image</h4></div><p>Build from a folder that has a Dockerfile, or use a ready-made image.</p><span class="eq">= docker build / docker pull</span></div>
+      <div class="nt"><div class="top"><span class="lnr">L4</span><h4>ports</h4></div><p>"host:container", same as before.</p><span class="eq">= -p 5173:5173</span></div>
+      <div class="nt"><div class="top"><span class="lnr">L6</span><h4>environment</h4></div><p>Settings your app reads.</p><span class="eq">= -e KEY=value</span></div>
+      <div class="nt"><div class="top"><span class="lnr">L8</span><h4>depends_on</h4></div><p>Start these first, so the order is db, then api, then web.</p></div>
+      <div class="nt"><div class="top"><span class="lnr">L22</span><h4>volumes (in a service)</h4></div><p>Mount a volume or a folder.</p><span class="eq">= -v anime:/data/db</span></div>
+      <div class="nt"><div class="top"><span class="lnr">L25</span><h4>volumes (top level)</h4></div><p>Named volumes Compose creates for you.</p><span class="eq">= docker volume create</span></div>
     </div>
   </div>
   <div class="foot">
-    <div class="fb" style="background:var(--teal-l);color:#05504f">🌐 <b>Free network:</b> Compose puts all services on one network, so the API reaches MongoDB at <code>db</code>.</div>
-    <div class="fb" style="background:var(--navy);color:#fff">▶️ <b>One command:</b> <code style="color:#4ade80">docker compose up</code> builds, creates and starts everything. <code style="color:#ffa657">down</code> removes it.</div>
+    <div class="fb">🌐 <b>Network for free.</b> Compose puts every service on one network, so the API reaches MongoDB at <code>db</code>.</div>
+    <div class="fb">▶️ <b>One command.</b> <code>docker compose up</code> builds, creates and starts everything. <code>docker compose down</code> removes it.</div>
   </div>
 </div></body></html>

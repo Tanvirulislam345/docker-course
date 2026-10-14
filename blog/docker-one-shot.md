@@ -10,18 +10,18 @@ All the code is in one repo: **https://github.com/Tanvirulislam345/docker-course
 
 ## Table of Contents
 
-1. Why should you use Docker?
-2. Core concepts: image, container, volume, network
-3. How Docker works: client, host and registry
-4. How a Dockerfile becomes an image
-5. Project 1: hello-docker
-6. Project 2: react-docker, step by step
-7. Docker Compose and Compose Watch
-8. Project 3: react-docker-compose
-9. Project 4: mern-docker (full stack)
-10. Troubleshooting
-11. Official JavaScript samples from Docker
-12. Cheat sheet and what's next
+1. [Why should you use Docker?](#1-why-should-you-use-docker)
+2. [Core concepts: image, container, volume, network](#2-core-concepts-image-container-volume-network)
+3. [How Docker works: client, host and registry](#3-how-docker-works-client-host-and-registry)
+4. [How a Dockerfile becomes an image](#4-how-a-dockerfile-becomes-an-image)
+5. [Project 1: hello-docker](#5-project-1-hello-docker)
+6. [Project 2: react-docker, step by step](#6-project-2-react-docker-step-by-step)
+7. [Docker Compose and Compose Watch](#7-docker-compose-and-compose-watch)
+8. [Project 3: react-docker-compose](#8-project-3-react-docker-compose)
+9. [Project 4: mern-docker (full stack)](#9-project-4-mern-docker-full-stack)
+10. [Troubleshooting](#10-troubleshooting)
+11. [Official JavaScript samples from Docker](#11-official-javascript-samples-from-docker)
+12. [Cheat sheet and what's next](#12-cheat-sheet-and-whats-next)
 
 **Before you start**, install [Docker Desktop](https://docs.docker.com/get-docker/) (Windows/Mac) or Docker Engine (Linux), and [Git](https://git-scm.com/). Docker Compose comes with Docker. Check both:
 

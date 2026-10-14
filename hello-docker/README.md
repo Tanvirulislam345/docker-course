@@ -78,5 +78,5 @@ What the Dockerfile does:
 
 ## Read along
 
-- 📖 [Docker One Shot](https://github.com/Tanvirulislam345/Docker-One-Short): the full guide that walks through this project step by step
+- 📖 [One Shot Docker](https://github.com/Tanvirulislam345/One-Shot-Docker): the full guide that walks through this project step by step
 - 📋 [Docker Commands Cheat Sheet](https://gist.github.com/Tanvirulislam345/cc0ac98b03cf9e583ba698ce05d9606f): every command used here, and more

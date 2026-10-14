@@ -75,3 +75,8 @@ What the Dockerfile does:
 | `WORKDIR /app` | Uses `/app` as the working directory inside the container |
 | `COPY . .` | Copies the project files into the image |
 | `CMD ["node", "app.js"]` | Runs the app when the container starts |
+
+## Read along
+
+- 📖 [Docker One Shot](https://github.com/Tanvirulislam345/Docker-One-Short): the full guide that walks through this project step by step
+- 📋 [Docker Commands Cheat Sheet](https://gist.github.com/Tanvirulislam345/cc0ac98b03cf9e583ba698ce05d9606f): every command used here, and more

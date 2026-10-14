@@ -95,3 +95,8 @@ react-docker/
 - **Port 5173 is already in use:** map a different host port, for example `docker run -p 3000:5173 react-docker`, then open http://localhost:3000.
 - **Page doesn't load from Docker:** the `dev` script runs `vite --host` so the server listens on all interfaces. Keep the `--host` flag if you change the script.
 - **`EACCES: permission denied`:** the Dockerfile runs the app as a non-root `app` user and gives it ownership of `/app`. If you change the Dockerfile, keep the `chown -R app:app .` step before `npm install`.
+
+## Read along
+
+- 📖 [Docker One Shot](https://github.com/Tanvirulislam345/Docker-One-Short): the full guide that walks through this project step by step
+- 📋 [Docker Commands Cheat Sheet](https://gist.github.com/Tanvirulislam345/cc0ac98b03cf9e583ba698ce05d9606f): every command used here, and more

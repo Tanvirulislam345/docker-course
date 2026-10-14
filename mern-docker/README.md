@@ -118,3 +118,8 @@ mern-docker/
 - **The frontend shows no anime or network errors:** check that the `api` container is running and that `VITE_API_URL` points to http://localhost:8000.
 - **Edits don't show up in the container:** start the stack with `docker compose watch`. `docker compose up` alone doesn't sync files. The frontend `vite.config.js` uses polling so Vite sees the synced files.
 - **`EACCES: permission denied`:** the Dockerfiles run the apps as a non-root `app` user and give it ownership of `/app`. If you change a Dockerfile, keep the `chown -R app:app .` step before `npm ci`.
+
+## Read along
+
+- 📖 [Docker One Shot](https://github.com/Tanvirulislam345/Docker-One-Short): the full guide that walks through this project step by step
+- 📋 [Docker Commands Cheat Sheet](https://gist.github.com/Tanvirulislam345/cc0ac98b03cf9e583ba698ce05d9606f): every command used here, and more
